@@ -28,4 +28,4 @@ for feature_n in range(array.shape[-1]):
 quantized_tfQ = quantize_vector(array, quantizer_list).round()
 ```
 
-Note that the output array (quantized_tf8) is still in **float32**, it is up to the user to cast it to the correct datatype (ex. **int8**, or **bool**). This hs been done to allow for maximum flexibility.
+Note that the output array (quantized_tfQ) is still in **float32**: it is up to the user to cast it to the correct datatype (ex. **int8**, or **bool**). This has been done to allow the most development flexibility and because numpy does not support any casting below int8.
