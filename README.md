@@ -5,7 +5,7 @@ Published: **24th November 2024**
 
 # implementation of feature-level quantization (ft-Q)
 
-The notebook **feature-level-quantization.ipynb** showcases the experiment outlined in the article (*WIP).
+The notebook **feature-level-quantization.ipynb** showcases the experiment outlined in [this article](https://medium.com/towards-data-science/introducing-ft-q-improving-vector-compression-with-feature-level-quantization-3c18470ed2ee).
 
 ### Usage
 
