@@ -1,17 +1,21 @@
-# Please cite
+# UPDATE 24–20–12:
 
-### UPDATE 24–20–12:
+It has come to my attention that a **similar approach** already exists and is available in the sentence-transformers library under the parameter of [calibration embeddings](https://sbert.net/docs/package_reference/sentence_transformer/quantization.html) (please cite the correct algorithm name). 
 
-It has come to my attention that a similar approach already exists and is available in the sentence-transformers library under the parameter of [calibration embeddings](https://sbert.net/docs/package_reference/sentence_transformer/quantization.html) (please cite the correct algorithm name). 
-
-On a personal note, if you are following calibration, take into consideration the following improvements:
-- for non-standardized values (very common after a dot product, values are not contained between [-1, 1] and may have big outliers) use quantiles [1, 99], do not use min-max to avoid including outliers
-- when using binary quantization use the **median** (and not 0) as threshold value, this lets you split the distribution into two perfect halves.
-
-### Outdated algorithm name (the code will be retained for the current users):
-Algorithm: **feature-level quantization (ft-Q)**<br>
+# Please Cite
+Algorithm: <s>**feature-level quantization (ft-Q)**</s> -> **adaptive embedding calibration**<br>
 Author: **Michelangiolo Mazzeschi**<br>
 Published: **24th November 2024**
+
+However, can regular calibration be improved? The main flaw we find in calibration is the use of minimum and maximum values to quantize each feature, which is a very **dangerous** practice. It only works properly if:<br>
+- the distribution does not contain outliers (in case of minmax, the distribution is misrepresented and lot of data can be lost)
+- is not the proper approach for binary quantization (the mean should be taken into account, not the minmax)
+
+## for non-binary quantization
+Replace minmax with quantiles [1, 99]. This will work for both standardized and non-standardized values (very common after a dot product, values are not contained between [-1, 1] and may have big outliers)
+
+## for binary quantization
+Use the **median** (and not the mean, minmax, or 0) as the threshold value for [0, 1]: this lets you split the distribution into two perfect halves.
 
 # implementation of feature-level quantization (ft-Q)
 
