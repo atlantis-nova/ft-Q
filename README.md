@@ -1,4 +1,10 @@
 # Please cite
+
+### UPDATE 24–20–12:
+
+It has come to my attention that a similar approach already exists and is available in the sentence-transformers library under the parameter of [calibration embeddings](https://sbert.net/docs/package_reference/sentence_transformer/quantization.html) (please cite the correct algorithm name). However, when applied to binary quantization it is still wrong, as the median should be utilized to split the distribution into two perfect halves. The code will be retained for the current users.
+
+### Outdated algorithm name:
 Algorithm: **feature-level quantization (ft-Q)**<br>
 Author: **Michelangiolo Mazzeschi**<br>
 Published: **24th November 2024**
