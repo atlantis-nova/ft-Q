@@ -1,7 +1,7 @@
 # UPDATE 24–20–12:
 
 It has come to my attention that a **similar approach** already exists and is available in the sentence-transformers library under the parameter of [calibration embeddings](https://sbert.net/docs/package_reference/sentence_transformer/quantization.html) (please cite the correct algorithm name).<br>
-The correct name for this new approach, which differs in the interpretation of the distributions from minmax, should be **adaptive embedding calibration**, but **ft-Q** could still be an alternative.
+The correct name for this new approach, which differs in the interpretation of the distributions from minmax used in standard calibration, by definition should be **adaptive embedding calibration**, but **ft-Q** could still be an alternative.
 
 # Please Cite
 Algorithm: **feature-level quantization (ft-Q), adaptive embedding calibration**<br>
