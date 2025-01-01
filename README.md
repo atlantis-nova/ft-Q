@@ -4,16 +4,16 @@ It has come to my attention that a **similar approach** already exists and is av
 The correct name for this new approach, which differs in the interpretation of the distributions from minmax used in standard calibration, by definition should be **adaptive embedding calibration**, but **ft-Q** could still be an alternative.
 
 # Please Cite
-Algorithm: **feature-level quantization (ft-Q), adaptive embedding calibration**<br>
+Algorithm: **feature-level quantization (ft-Q), edge calibration**<br>
 Author: **Michelangiolo Mazzeschi**<br>
 Published: **24th November 2024**
 
 However, can regular calibration be improved? The main flaw we find in calibration is the use of minimum and maximum values to quantize each feature, which is a very **dangerous** practice. It only works properly if:<br>
-- the distribution does not contain outliers (in case of minmax, the distribution is misrepresented and lot of data can be lost)
-- is not the proper approach for binary quantization (the mean should be taken into account, not the minmax)
+- the distribution does not contain outliers (in the case of minmax, the distribution is misrepresented and a lot of data can be lost)
+- is not the proper approach for binary quantization (the median bin should be taken into account, not the minmax)
 
 ## for non-binary quantization
-Replace minmax with quantiles [1, 99]. This will work for both standardized and non-standardized values (very common after a dot product, values are not contained between [-1, 1] and may have big outliers)
+Replace minmax with quantiles [1, 99]. This will work for both standardized and non-standardized values (very common after a dot product, values are not contained between [-1, 1] and may have big outliers). Because we are looking at the edges of the tails, I gave this variation the name of **edge calibration**.
 
 ## for binary quantization
 Use the **median** (and not the mean, minmax, or 0) as the threshold value for [0, 1]: this lets you split the distribution into two perfect halves.
